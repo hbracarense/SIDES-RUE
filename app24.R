@@ -1266,8 +1266,8 @@ server <- function(input, output, session){
              switch(input$regulamentacoes_mg_input,
                     "Todas as regulações" = {df <- timedata %>% filter(group == '2')
                     centro <- "2017-06-30"},
-                    "IAM" = {df <- timedata %>% filter(ssubgroup == '2.2')
-                    centro <- "2017-06-30"},
+                    "IAM" = {df <- timedata %>% filter(subgroup == '2.2')
+                    centro <- "2022-06-30"},
                     "AVC" = {df <- timedata %>% filter(subgroup == '2.3')
                     centro <- "2020-06-30"},
                     "Queimados" = {df <- timedata %>% filter(subgroup == '2.5')
