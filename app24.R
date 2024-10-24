@@ -43,7 +43,7 @@ typeIcons <- iconList(blue = makeIcon("www/blue.png", iconWidth = 24, iconHeight
 
 df_estabelecimentos_final <- df_estabelecimentos %>% filter(Tipologia == "Habilitados IAM/AVC"|Tipologia == "Não Habilitados"|Tipologia == "Rede Resposta")
 df_estabelecimentos_final <- df_estabelecimentos_final %>% mutate(cor = ifelse(Tipologia == "Habilitados IAM/AVC", "green",
-                                             ifelse(Tipologia == "Rede Resposta", "blue", "red")))
+                                                                               ifelse(Tipologia == "Rede Resposta", "blue", "red")))
 
 coordenadas_municipios <- data.frame(coordinates(mg_shp))
 coordenadas_municipios$cidades <- mg_shp@data$NM_MUN
@@ -66,63 +66,64 @@ cores <- c('#CED2CC', '#23282D', '#4CB5F5', '#1F3F49', '#D32D41', '#6AB187')
 #UI - Aba "Apresentação"-------------------------------------------
 tab_apresentacao <- tabPanel("Apresentação",
                              fluidRow(
-                                 column(12,
-                                        align = 'center',
-                                        h1("Bem-vindo ao SIDES-RUE!"),
-                                        box(
-                                          width = 1,
-                                          solidHeader = TRUE,
-                                          p("Sem sombra", style ="text-align: justify;", style = "color: white;", style = "font-size:18px;"),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          p("Sem sombra", style ="text-align: justify;", style = "color: white;", style = "font-size:18px;")
-                                        ),
-                                        box(
-                                          width = 10,
-                                          solidHeader = TRUE,
-                                          br(),
-                                          p("Esse Sistema de Informações apresenta indicadores associados ao Desempenho da Rede de Urgência e Emergência (RUE) do Estado de Minas Gerais. Nessa primeira versão priorizamos as linhas de cuidado do Infarto Agudo do Miocárdio (IAM) e do Acidente Vascular Cerebral (AVC). O sistema está organizado em quatro abas além dessa apresentação. A primeira aba traz o marco regulatório atinente à construção dessas linhas de cuidado, incluindo a regulamentação federal e estadual. A segunda apresenta a caracterização dos estabelecimentos hospitalares segundo o status de habilitação ou credenciamento na rede. Em seguida propomos uma tipologia das microrregiões de saúde que foi construída a partir de indicadores de oferta, desempenho e taxa de ocupação hospitalar. Por fim, a última aba apresenta os indicadores de desempenho da rede do IAM e AVC considerando as micro e macrorregiões de saúde.", style ="text-align: justify;", style = "color: black;", style = "font-size:18px;"),
-                                          p("Esse sistema foi construído a partir do projeto de pesquisa desenvolvido com financiamento do Edital Nº 003/2020 - PROGRAMA DE PESQUISA PARA O SUS: GESTÃO COMPARTILHADA EM SAÚDE-PPSUS financiado pela FAPEMIG. O projeto foi desenvolvido a partir de uma parceria técnica com a Secretaria Estadual de Saúde do Estado de Minas Gerais (SES-MG).", style ="text-align: justify;", style = "color: black;", style = "font-size:18px;"),
-                                          br(),
-                                          p(strong("Última atualização: "), "31 de outubro de 2023.", style ="text-align: justify;", style = "color: black;", style = "font-size:18px;"),
-                                          img(src = "banner.jpeg", height = '100%', width = '100%')
-                                        ),
-                                        box(
-                                          width = 1,
-                                          solidHeader = TRUE,
-                                          p("Sem sombra", style ="text-align: justify;", style = "color: white;", style = "font-size:18px;"),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          br(),
-                                          p("Sem sombra", style ="text-align: justify;", style = "color: white;", style = "font-size:18px;")
-                                        )
-                                        )
+                               column(12,
+                                      align = 'center',
+                                      h1("Bem-vindo ao SIDES-RUE!"),
+                                      box(
+                                        width = 1,
+                                        solidHeader = TRUE,
+                                        p("Sem sombra", style ="text-align: justify;", style = "color: white;", style = "font-size:15px;"),
+                                        br(),
+                                        br(),
+                                        br(),
+                                        br(),
+                                        br(),
+                                        br(),
+                                        p("Sem sombra", style ="text-align: justify;", style = "color: white;", style = "font-size:15px;")
+                                      ),
+                                      box(
+                                        width = 10,
+                                        solidHeader = TRUE,
+                                        br(),
+                                        p("Esse Sistema de Informações apresenta indicadores associados ao Desempenho da Rede de Urgência e Emergência (RUE) do Estado de Minas Gerais. Nessa primeira versão priorizamos as linhas de cuidado do Infarto Agudo do Miocárdio (IAM) e do Acidente Vascular Cerebral (AVC). O sistema está organizado em quatro abas além dessa apresentação. A primeira aba traz o marco regulatório atinente à construção dessas linhas de cuidado, incluindo a regulamentação federal e estadual. A segunda apresenta a caracterização dos estabelecimentos hospitalares segundo o status de habilitação ou credenciamento na rede. Em seguida propomos uma tipologia das microrregiões de saúde que foi construída a partir de indicadores de oferta, desempenho e taxa de ocupação hospitalar. Por fim, a última aba apresenta os indicadores de desempenho da rede do IAM e AVC considerando as micro e macrorregiões de saúde. Para informações técnicas mais detalhadas, consulte a nota metodológica disponível para ",em('download'),' ao final desta página.', style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
+                                        p("Esse sistema foi construído a partir do projeto de pesquisa desenvolvido com financiamento do Edital Nº 003/2020 - PROGRAMA DE PESQUISA PARA O SUS: GESTÃO COMPARTILHADA EM SAÚDE-PPSUS financiado pela FAPEMIG. O projeto foi desenvolvido a partir de uma parceria com a Secretaria Estadual de Saúde do Estado de Minas Gerais (SES-MG).", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
+                                        br(),
+                                        p(strong('Equipe de pesquisa'), style ="text-align: right;", style = "color: black;", style = "font-size:15px;"),
+                                        p('Mônica Viegas   ',strong('|'),'   Kenya Noronha', style ="text-align: right;", style = "color: black;", style = "font-size:15px;"),
+                                        p('Lucas Carvalho   ',strong('|'),'   Cristina Guimarães', style ="text-align: right;", style = "color: black;", style = "font-size:15px;"),
+                                        p('Daniel Nogueira   ',strong('|'),'   Henrique Bracarense', style ="text-align: right;", style = "color: black;", style = "font-size:15px;"),
+                                        p('Marcelo Fleury   ',strong('|'),'   Maria Rigotti', style ="text-align: right;", style = "color: black;", style = "font-size:15px;"),
+                                        p('Pedro Benner   ',strong('|'),'   Clara Sanna', style ="text-align: right;", style = "color: black;", style = "font-size:15px;"),
+                                        br(),
+                                        p(strong("Última atualização: "), "23 de outubro de 2024.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
+                                        img(src = "assets/banner_sus.jpeg", height = '100%', width = '100%'),
+                                        br(),
+                                        br(),
+                                        fluidRow(      div(
+                                          style = "position:relative; left:calc(0%);",
+                                          downloadButton(
+                                            outputId = "download_nota",
+                                            label = "Nota metodológica",
+                                            style = "color: #fff; background-color: #222222; border-color: #fff;"
+                                          ) 
+                                        ))
+                                      ),
+                                      box(
+                                        width = 1,
+                                        solidHeader = TRUE,
+                                        p("Sem sombra", style ="text-align: justify;", style = "color: white;", style = "font-size:15px;"),
+                                        br(),
+                                        br(),                            
+                                        br(),
+                                        br(),
+                                        br(),
+                                        br(),
+                                        p("Sem sombra", style ="text-align: justify;", style = "color: white;", style = "font-size:15px;")
+                                      )
+                               )
                                
                              )
-                             )
+)
 
 #UI - Aba "Marco regulatório"--------------------------------------
 tab_marco <- tabPanel("Marco regulatório",
@@ -130,56 +131,72 @@ tab_marco <- tabPanel("Marco regulatório",
                         box(width = 12, solidHeader = TRUE, withSpinner(timevisOutput("marco_output"), type = '8'))
                       ),
                       fluidRow(box(width = 4, solidHeader = TRUE, style = "border-radius: 15px; background-color: #f2f0eb",
-                                   div(style="display:inline-block", radioButtons("nivel_input", HTML(paste("Nível", span("LINHA",style = "color:#f2f0eb"), sep = "<br/>")), c("Todas as regulações", "Estadual", "Federal"))),
-                                   div(style="display:inline-block", radioButtons("regulamentacoes_input", "Objeto", c("Todas as regulações", "IAM e AVC", "Somente IAM", "Somente AVC")))
-                                ),
-                               box(width = 6, solidHeader = TRUE,
-                                   p("A linha temporal do marco regulatório contempla as portarias ministeriais, em âmbito federal, e deliberações e resoluções estaduais atinentes à linha de cuidado IAM/AVC, no intervalo 1998-2021.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
-                                   p("O marco inicial se dá em 2004, com a criação da Política Nacional de Atenção Cardiovascular de Alta Complexidade.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
-                                   p("Selecione os filtros desejados ao lado e clique nos ícones para acessar o conteúdo dos instrumentos.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
-                                      )
-                      )
+                                   column(width = 6,
+                                          div(style="display:inline-block", radioButtons("nivel_input", HTML(paste("Nível", span("LINHA",style = "color:#f2f0eb"), sep = "<br/>")), c("Todas as regulações", "Estadual", "Federal")))),
+                                   column(width = 6,
+                                          conditionalPanel(
+                                            condition = 'input.nivel_input == "Todas as regulações"',
+                                            div(style="display:inline-block", radioButtons("regulamentacoes_all_input", "Objeto", c("Todas as regulações", "IAM", "AVC", "Queimados", "Trauma", "Rede de Resposta", "Valora Minas", "Outros/Misto")))
+                                          ),
+                                          conditionalPanel(
+                                            condition = 'input.nivel_input == "Estadual"',
+                                            div(style="display:inline-block", radioButtons("regulamentacoes_mg_input", "Objeto", c("Todas as regulações", "IAM", "AVC", "Queimados", "Rede de Resposta", "Valora Minas", "Outros/Misto")))
+                                          ),
+                                          conditionalPanel(
+                                            condition = 'input.nivel_input == "Federal"',
+                                            div(style="display:inline-block", radioButtons("regulamentacoes_br_input", "Objeto", c("Todas as regulações", "IAM", "AVC", "Queimados", "Trauma","Outros/Misto")))
+                                          )
+              
+                                   )
 
+                      ),
+                      box(width = 6, solidHeader = TRUE,
+                          p("A linha temporal do marco regulatório contempla as portarias ministeriais, em âmbito federal, e deliberações e resoluções estaduais atinentes às linha de cuidado IAM, AVC, Queimados e Trauma, bem como à Rede de Resposta e ao Valora Minas, no intervalo 1998-2024.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
+                          p("O marco inicial se dá em 2004, com a criação da Política Nacional de Atenção Cardiovascular de Alta Complexidade.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
+                          p("Selecione os filtros desejados ao lado e clique nos ícones para acessar o conteúdo dos instrumentos.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
+                      )
+                      )
+                      
 )
 
 #UI - Aba "Estabelecimentos"--------------------------------------
 tab_estabelecimentos <- tabPanel("Estabelecimentos",
                                  fluidRow(box(width = 12, solidHeader = TRUE, style = "background-color: #ffffff",
-                                            withSpinner(leafletOutput("mapa_estabelecimentos"), type ='8')),
+                                              withSpinner(leafletOutput("mapa_estabelecimentos"), type ='8')),
                                           box(width = 3, solidHeader = TRUE, style = "border-radius: 15px; background-color: #f2f0eb",
                                               conditionalPanel(
-                                               condition = "typeof input.mapa_estabelecimentos_polygon == 'undefined'||input.mapa_estabelecimentos_polygon == 'Municípios'",
-                                               selectizeInput(
-                                                 inputId = "municipio_input",
-                                                 label = "Município",
-                                                 choices = sort(c("--Todos os municípios--", coordenadas_municipios$cidades)),
-                                                 selected = "--Todos os municípios--"
-                                               )
-                                             ),
-                                             conditionalPanel(
-                                               condition = "input.mapa_estabelecimentos_polygon == 'Microrregiões'",
-                                               selectInput(
-                                                 inputId = "microrregiao_input",
-                                                 label = "Microrregião",
-                                                 choices = sort(c("--Todas as microrregiões--", coordenadas_micros$microrregiao)),
-                                                 selected = "--Todas as microrregiões--"
-                                               )
-                                             ),
-                                             conditionalPanel(
-                                               condition = "input.mapa_estabelecimentos_polygon == 'Macrorregiões'",
-                                               selectInput(
-                                                 inputId = "macrorregiao_input",
-                                                 label = "Macrorregião",
-                                                 choices = sort(c("--Todas as macrorregiões--", coordenadas_macros$macrorregiao)),
-                                                 selected = "--Todas as macrorregiões--"
-                                               )
-                                             )
+                                                condition = "typeof input.mapa_estabelecimentos_polygon == 'undefined'||input.mapa_estabelecimentos_polygon == 'Municípios'",
+                                                selectizeInput(
+                                                  inputId = "municipio_input",
+                                                  label = "Município",
+                                                  choices = sort(c("--Todos os municípios--", coordenadas_municipios$cidades)),
+                                                  selected = "--Todos os municípios--"
+                                                )
                                               ),
+                                              conditionalPanel(
+                                                condition = "input.mapa_estabelecimentos_polygon == 'Microrregiões'",
+                                                selectInput(
+                                                  inputId = "microrregiao_input",
+                                                  label = "Microrregião",
+                                                  choices = sort(c("--Todas as microrregiões--", coordenadas_micros$microrregiao)),
+                                                  selected = "--Todas as microrregiões--"
+                                                )
+                                              ),
+                                              conditionalPanel(
+                                                condition = "input.mapa_estabelecimentos_polygon == 'Macrorregiões'",
+                                                selectInput(
+                                                  inputId = "macrorregiao_input",
+                                                  label = "Macrorregião",
+                                                  choices = sort(c("--Todas as macrorregiões--", coordenadas_macros$macrorregiao)),
+                                                  selected = "--Todas as macrorregiões--"
+                                                )
+                                              )
+                                          ),
                                           box(width = 3, solidHeader = TRUE,
                                               p("Pesquise os estabelecimentos habilitados para IAM/AVC, não habilitados e pertencentes à Rede  Resposta em 2019, por município, micro e macrorregião, com visualização espacial no mapa acima e sintetização na tabela abaixo.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
                                               p("Estatísticas descritivas são apresentadas à direita.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
                                               p("Ao final da página, é possível realizar download das informações obtidas em formato .xlsx.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;")
-                                              ),
+                                          ),
                                           column(
                                             width = 6,
                                             tags$h4("Caracterização"),
@@ -197,34 +214,34 @@ tab_estabelecimentos <- tabPanel("Estabelecimentos",
                                                   tableOutput("caracterizacao_macrorregioes")))
                                           ),
                                           
-
+                                          
                                  ),
-                                              tags$h1("Dados dos estabelecimentos"),
-                                              fluidRow(
-                                                box(width = 12,             
-                                                    status = "warning",
-                                                    solidHeader = FALSE,
-                                                    conditionalPanel(
-                                                      condition = "typeof input.mapa_estabelecimentos_polygon == 'undefined'||input.mapa_estabelecimentos_polygon == 'Municípios'",
-                                                      DT::dataTableOutput("tabela_municipios", width = '100%')),
-                                                    conditionalPanel(
-                                                      condition = "input.mapa_estabelecimentos_polygon == 'Microrregiões'",
-                                                      DT::dataTableOutput("tabela_microrregioes", width = '100%')),
-                                                    conditionalPanel(
-                                                      condition = "input.mapa_estabelecimentos_polygon == 'Macrorregiões'",
-                                                      DT::dataTableOutput("tabela_macrorregioes", width = '100%'))
-                                                    )
-
-                                              ),
-                                              fluidRow(      div(
-                                                style = "position:relative; left:calc(45%);",
-                                                downloadButton(
-                                                  outputId = "download_estabelecimentos",
-                                                  label = "Download",
-                                                  style = "color: #fff; background-color: #222222; border-color: #fff;"
-                                                ) 
-                                              ))
-                                              )
+                                 tags$h1("Dados dos estabelecimentos"),
+                                 fluidRow(
+                                   box(width = 12,             
+                                       status = "warning",
+                                       solidHeader = FALSE,
+                                       conditionalPanel(
+                                         condition = "typeof input.mapa_estabelecimentos_polygon == 'undefined'||input.mapa_estabelecimentos_polygon == 'Municípios'",
+                                         DT::dataTableOutput("tabela_municipios", width = '100%')),
+                                       conditionalPanel(
+                                         condition = "input.mapa_estabelecimentos_polygon == 'Microrregiões'",
+                                         DT::dataTableOutput("tabela_microrregioes", width = '100%')),
+                                       conditionalPanel(
+                                         condition = "input.mapa_estabelecimentos_polygon == 'Macrorregiões'",
+                                         DT::dataTableOutput("tabela_macrorregioes", width = '100%'))
+                                   )
+                                   
+                                 ),
+                                 fluidRow(      div(
+                                   style = "position:relative; left:calc(45%);",
+                                   downloadButton(
+                                     outputId = "download_estabelecimentos",
+                                     label = "Download",
+                                     style = "color: #fff; background-color: #222222; border-color: #fff;"
+                                   ) 
+                                 ))
+)
 
 #UI - Aba "Tipologia"---------------------------------------------
 linebreaks <- function(n){HTML(strrep(br(), n))}
@@ -338,39 +355,39 @@ tab_macrorregioes <- tabPanel("Macrorregiões",
 #UI - Aba "Microrregiões"-----------------------------------------
 tab_microrregioes <- tabPanel("Microrregiões",
                               sidebarLayout(
-                                  sidebarPanel(
-                                    selectizeInput(
-                                      inputId = "micro_input",
-                                      label = "Microrregião",
-                                      choices = sort(df_micro$nomemicro),
-                                      multiple = TRUE, 
-                                      options = list(
-                                        placeholder = "Escolha uma microrregião",
-                                        maxItems = 1)
-                                    ),
-                                    conditionalPanel(
-                                      condition = 'input.micro_comparacao_input != 0 && input.micro_input != ""',
-                                      uiOutput("micro_tipo_comparacao_ui"),
-                                      uiOutput("micro_comparacao_ui")
-                                    ),
-                                    radioButtons(
-                                      inputId = "micro_enfermidade",
-                                      label = "Enfermidade",
-                                      choices = c("Todas as enfermidades", "IAM", "AVC"),
-                                      selected = "Todas as enfermidades"
-                                    ),
-                                    conditionalPanel(
-                                      condition = 'input.micro_input != ""',
-                                      checkboxInput(inputId = "micro_comparacao_input", label = "Comparar com outras microrregiões", value = FALSE)
-                                    ),
+                                sidebarPanel(
+                                  selectizeInput(
+                                    inputId = "micro_input",
+                                    label = "Microrregião",
+                                    choices = sort(df_micro$nomemicro),
+                                    multiple = TRUE, 
+                                    options = list(
+                                      placeholder = "Escolha uma microrregião",
+                                      maxItems = 1)
+                                  ),
+                                  conditionalPanel(
+                                    condition = 'input.micro_comparacao_input != 0 && input.micro_input != ""',
+                                    uiOutput("micro_tipo_comparacao_ui"),
+                                    uiOutput("micro_comparacao_ui")
+                                  ),
+                                  radioButtons(
+                                    inputId = "micro_enfermidade",
+                                    label = "Enfermidade",
+                                    choices = c("Todas as enfermidades", "IAM", "AVC"),
+                                    selected = "Todas as enfermidades"
+                                  ),
+                                  conditionalPanel(
+                                    condition = 'input.micro_input != ""',
+                                    checkboxInput(inputId = "micro_comparacao_input", label = "Comparar com outras microrregiões", value = FALSE)
+                                  ),
                                   div(
-                                      style = "position:relative; left:calc(37.5%);",
-                                      actionButton(
-                                        inputId = "exibicao_micro",
-                                        label = textOutput("texto_botao_micro"),
-                                        style = "color: #fff; background-color: #222222; border-color: #fff;"
-                                      )
+                                    style = "position:relative; left:calc(37.5%);",
+                                    actionButton(
+                                      inputId = "exibicao_micro",
+                                      label = textOutput("texto_botao_micro"),
+                                      style = "color: #fff; background-color: #222222; border-color: #fff;"
                                     )
+                                  )
                                 ),
                                 mainPanel(
                                   conditionalPanel(
@@ -431,7 +448,7 @@ tab_microrregioes <- tabPanel("Microrregiões",
 tabs_indicadores <- navbarMenu("Indicadores",
                                tab_macrorregioes,
                                tab_microrregioes
-                               )
+)
 #UI - geral-------------------------------------------------------
 ui <- navbarPage(title = img("SIDES-RUE", src="logo.jpeg", height = '40px', width = '120px',align = 'center'),
                  theme = shinytheme("cosmo"),
@@ -444,13 +461,18 @@ ui <- navbarPage(title = img("SIDES-RUE", src="logo.jpeg", height = '40px', widt
                             height: 45px;
                             }
                            .navbar {min-height:45px !important;}
-                           
-                                     .item11   { border-color: #23282D; color: white; background-color: #23282D; }
+                                    
+                                    .item11   { border-color: #23282D; color: white; background-color: #23282D; }
                                     .item12 { border-color: #CED2CC; color: black; background-color: #CED2CC; }
                                     .item13 { border-color: #6AB187; color: white; background-color: #6AB187; }
+                                    .item15 { border-color: #B3C100; color: black; background-color: #B3C100; }
+                                    .item16 { border-color: #D32D41; color: white; background-color: #D32D41; }
                                     .item21   { border-color: #23282D; color: white; background-color: #23282D; }
                                     .item22 { border-color: #CED2CC; color: black; background-color: #CED2CC; }
                                     .item23 { border-color: #6AB187; color: white; background-color: #6AB187; }
+                                    .item24 { border-color: #4CB5F5; color: black; background-color: #4CB5F5; }
+                                    .item25 { border-color: #B3C100; color: black; background-color: #B3C100; }
+                                    .item27 { border-color: #1F3F49; color: white; background-color: #1F3F49; }
                                     
                                     .box.box-solid.box-warning>.box-header {
                                     color:#ffffff;
@@ -487,7 +509,7 @@ ui <- navbarPage(title = img("SIDES-RUE", src="logo.jpeg", height = '40px', widt
                  tab_estabelecimentos,
                  tab_tipologia,
                  tabs_indicadores
-
+                 
 )
 
 #Server - Geral-----------------------------------------------
@@ -574,7 +596,7 @@ server <- function(input, output, session){
                "deliberacao_3150.pdf"
              },
              "26" = {
-              "deliberacao_3160.pdf" 
+               "deliberacao_3160.pdf" 
              },
              "27" = {
                "deliberacao_3209.pdf"
@@ -599,6 +621,261 @@ server <- function(input, output, session){
              },
              "34" = {
                "deliberacao_3415.pdf"
+             },
+             "35" = {
+               "portaria_104.pdf"
+             },
+             "36" = {
+               "portaria_1099.pdf"
+             },
+             "37" = {
+               "portaria_1374.pdf"
+             },
+             "38" = {
+               "portaria_3670.pdf"
+             },
+             "39" = {
+               "portaria_845.pdf"
+             },
+             "40" = {
+               "portaria_1174.pdf"
+             },
+             "41" = {
+               "portaria_1383.pdf"
+             },
+             "42" = {
+               "portaria_2478.pdf"
+             },
+             "43" = {
+               "portaria_2569.pdf"
+             },
+             "44" = {
+               "portaria_3478.pdf"
+             },
+             "45" = {
+               "portaria_95.pdf"
+             },
+             "46" = {
+               "portaria_104_2009.pdf"
+             },
+             "47" = {
+               "portaria_1366.pdf"
+             },
+             "48" = {
+               "portaria_1365.pdf"
+             },
+             "49" = {
+               "portaria_1678.pdf"
+             },
+             "50" = {
+               "portaria_701.pdf"
+             },
+             "51" = {
+               "portaria_1816.pdf"
+             },
+             "52" = {
+               "portaria_1750.pdf"
+             },
+             "53" = {
+               "portaria_888.pdf"
+             },
+             "54" = {
+               "portaria_3568.pdf"
+             },
+             "55" = {
+               "portaria_3410.pdf"
+             },
+             "56" = {
+               "portaria_1202.pdf"
+             },
+             "57" = {
+               "deliberacao_4509.pdf"
+             },
+             "58" = {
+               "resolucao_9210.pdf"
+             },
+             "59" = {
+               "deliberacao_4408.pdf"
+             },
+             "60" = {
+               "deliberacao_3812.pdf"
+             },
+             "61" = {
+               "deliberacao_3812.pdf"
+             },
+             "62" = {
+               "deliberacao_3733.pdf"
+             },
+             "63" = {
+               "deliberacao_3786.pdf"
+             },
+             "64" = {
+               "deliberacao_3914.pdf"
+             },
+             "65" = {
+               "deliberacao_3982.pdf"
+             },
+             "66" = {
+               "deliberacao_3782.pdf"
+             },
+             "67" = {
+               "deliberacao_3910.pdf"
+             },
+             "68" = {
+               "deliberacao_4183.pdf"
+             },
+             "69" = {
+               "deliberacao_4403.pdf"
+             },
+             "70" = {
+               "deliberacao_4359.pdf"
+             },
+             "71" = {
+               "deliberacao_4406.pdf"
+             },
+             "72" = {
+               "deliberacao_3533.pdf"
+             },
+             "73" = {
+               "deliberacao_3851.pdf"
+             },
+             "74" = {
+               "deliberacao_3844.pdf"
+             },
+             "75" = {
+               "deliberacao_3844.pdf"
+             },
+             "76" = {
+               "deliberacao_3977.pdf"
+             },
+             "77" = {
+               "resolucao_8301.pdf"
+             },
+             "78" = {
+               "deliberacao_4282.pdf"
+             },
+             "79" = {
+               "resolucao_6714.pdf"
+             },
+             "80" = {
+               "deliberacao_3416.pdf"
+             },
+             "81" = {
+               "portaria_1273.pdf"
+             },
+             "82" = {
+               "deliberacao_3536.pdf"
+             },
+             "83" = {
+               "deliberacao_3532.pdf"
+             },
+             "84" = {
+               "deliberacao_3625.pdf"
+             },
+             "85" = {
+               "deliberacao_3624.pdf"
+             },
+             "86" = {
+               "deliberacao_3677.pdf"
+             },
+             "87" = {
+               "deliberacao_3416.pdf"
+             },
+             "88" = {
+               "deliberacao_3594.pdf"
+             },
+             "89" = {
+               "deliberacao_3673.pdf"
+             },
+             "90" = {
+               "deliberacao_4124.pdf"
+             },
+             "91" = {
+               "resolucao_8636.pdf"
+             },
+             "92" = {
+               "deliberacao_4151.pdf"
+             },
+             "93" = {
+               "resolucao_8694.pdf"
+             },
+             "94" = {
+               "deliberacao_4296.pdf"
+             },
+             "95" = {
+               "deliberacao_4326.pdf"
+             },
+             "96" = {
+               "deliberacao_4405.pdf"
+             },
+             "97" = {
+               "resolucao_9210.pdf"
+             },
+             "98" = {
+               "deliberacao_4509.pdf"
+             },
+             "99" = {
+               "deliberacao_3909.pdf"
+             },
+             "100" = {
+               "portaria_1996.pdf"
+             },
+             "101" = {
+               "portaria_29.pdf"
+             },
+             "102" = {
+               "portaria_3128.pdf"
+             },
+             "103" = {
+               "portaria_2211.pdf"
+             },
+             "104" = {
+               "portaria_3438.pdf"
+             },
+             "105" = {
+               "deliberacao_3763.pdf"
+             },
+             "106" = {
+               "resolucao_9074.pdf"
+             },
+             "107" = {
+               "deliberacao_4044.pdf"
+             },
+             "108" = {
+               "deliberacao_4505.pdf"
+             },
+             "109" = {
+               "resolucao_9112.pdf"
+             },
+             "110" = {
+               "deliberacao_4439.pdf"
+             },
+             "111" = {
+               "deliberacao_4408.pdf"
+             },
+             "112" = {
+               "resolucao_8983.pdf"
+             },
+             "113" = {
+               "resolucao_8984.pdf"
+             },
+             "114" = {
+               "deliberacao_4050.pdf"
+             },
+             "115" = {
+               "deliberacao_3951.pdf"
+             },
+             "116" = {
+               "resolucao_8301.pdf"
+             },
+             "117" = {
+               "resolucao_8357.pdf"
+             },
+             "118" = {
+               "deliberacao_3906.pdf"
+             },
+             "119" = {
+               "deliberacao_3909.pdf"
              })
     },
     content = function(file) {
@@ -704,6 +981,261 @@ server <- function(input, output, session){
              },
              "34" = {
                file.copy("www/deliberacao_3415.pdf", file)
+             },
+             "35" = {
+               file.copy("www/portaria_104.pdf", file)
+             },
+             "36" = {
+               file.copy("www/portaria_1099.pdf", file)
+             },
+             "37" = {
+               file.copy("www/portaria_1374.pdf", file)
+             },
+             "38" = {
+               file.copy("www/portaria_3670.pdf", file)
+             },
+             "39" = {
+               file.copy("www/portaria_845.pdf", file)
+             },
+             "40" = {
+               file.copy("www/portaria_1174.pdf", file)
+             },
+             "41" = {
+               file.copy("www/portaria_1383.pdf", file)
+             },
+             "42" = {
+               file.copy("www/portaria_2478.pdf", file)
+             },
+             "43" = {
+               file.copy("www/portaria_2569.pdf", file)
+             },
+             "44" = {
+               file.copy("www/portaria_3478.pdf", file)
+             },
+             "45" = {
+               file.copy("www/portaria_95.pdf", file)
+             },
+             "46" = {
+               file.copy("www/portaria_104_2009.pdf", file)
+             },
+             "47" = {
+               file.copy("www/portaria_1366.pdf", file)
+             },
+             "48" = {
+               file.copy("www/portaria_1365.pdf", file)
+             },
+             "49" = {
+               file.copy("www/portaria_1678.pdf", file)
+             },
+             "50" = {
+               file.copy("www/portaria_701.pdf", file)
+             },
+             "51" = {
+               file.copy("www/portaria_1816.pdf", file)
+             },
+             "52" = {
+               file.copy("www/portaria_1750.pdf", file)
+             },
+             "53" = {
+               file.copy("www/portaria_888.pdf", file)
+             },
+             "54" = {
+               file.copy("www/portaria_3568.pdf", file)
+             },
+             "55" = {
+               file.copy("www/portaria_3410.pdf", file)
+             },
+             "56" = {
+               file.copy("www/portaria_1202.pdf", file)
+             },
+             "57" = {
+               file.copy("www/deliberacao_4509.pdf", file)
+             },
+             "58" = {
+               file.copy("www/resolucao_9210.pdf", file)
+             },
+             "59" = {
+               file.copy("www/deliberacao_4408.pdf", file)
+             },
+             "60" = {
+               file.copy("www/deliberacao_3812.pdf", file)
+             },
+             "61" = {
+               file.copy("www/deliberacao_3812.pdf", file)
+             },
+             "62" = {
+               file.copy("www/deliberacao_3733.pdf", file)
+             },
+             "63" = {
+               file.copy("www/deliberacao_3786.pdf", file)
+             },
+             "64" = {
+               file.copy("www/deliberacao_3914.pdf", file)
+             },
+             "65" = {
+               file.copy("www/deliberacao_3982.pdf", file)
+             },
+             "66" = {
+               file.copy("www/deliberacao_3782.pdf", file)
+             },
+             "67" = {
+               file.copy("www/deliberacao_3910.pdf", file)
+             },
+             "68" = {
+               file.copy("www/deliberacao_4183.pdf", file)
+             },
+             "69" = {
+               file.copy("www/deliberacao_4403.pdf", file)
+             },
+             "70" = {
+               file.copy("www/deliberacao_4359.pdf", file)
+             },
+             "71" = {
+               file.copy("www/deliberacao_4406.pdf", file)
+             },
+             "72" = {
+               file.copy("www/deliberacao_3533.pdf", file)
+             },
+             "73" = {
+               file.copy("www/deliberacao_3851.pdf", file)
+             },
+             "74" = {
+               file.copy("www/deliberacao_3844.pdf", file)
+             },
+             "75" = {
+               file.copy("www/deliberacao_3844.pdf", file)
+             },
+             "76" = {
+               file.copy("www/deliberacao_3977.pdf", file)
+             },
+             "77" = {
+               file.copy("www/resolucao_8301.pdf", file)
+             },
+             "78" = {
+               file.copy("www/deliberacao_4282.pdf", file)
+             },
+             "79" = {
+               file.copy("www/resolucao_6714.pdf", file)
+             },
+             "80" = {
+               file.copy("www/deliberacao_3416.pdf", file)
+             },
+             "81" = {
+               file.copy("www/portaria_1273.pdf", file)
+             },
+             "82" = {
+               file.copy("www/deliberacao_3536.pdf", file)
+             },
+             "83" = {
+               file.copy("www/deliberacao_3532.pdf", file)
+             },
+             "84" = {
+               file.copy("www/deliberacao_3625.pdf", file)
+             },
+             "85" = {
+               file.copy("www/deliberacao_3624.pdf", file)
+             },
+             "86" = {
+               file.copy("www/deliberacao_3677.pdf", file)
+             },
+             "87" = {
+               file.copy("www/deliberacao_3416.pdf", file)
+             },
+             "88" = {
+               file.copy("www/deliberacao_3594.pdf", file)
+             },
+             "89" = {
+               file.copy("www/deliberacao_3673.pdf", file)
+             },
+             "90" = {
+               file.copy("www/deliberacao_4124.pdf", file)
+             },
+             "91" = {
+               file.copy("www/resolucao_8636.pdf", file)
+             },
+             "92" = {
+               file.copy("www/deliberacao_4151.pdf", file)
+             },
+             "93" = {
+               file.copy("www/resolucao_8694.pdf", file)
+             },
+             "94" = {
+               file.copy("www/deliberacao_4296.pdf", file)
+             },
+             "95" = {
+               file.copy("www/deliberacao_4326.pdf", file)
+             },
+             "96" = {
+               file.copy("www/deliberacao_4405.pdf", file)
+             },
+             "97" = {
+               file.copy("www/resolucao_9210.pdf", file)
+             },
+             "98" = {
+               file.copy("www/deliberacao_4509.pdf", file)
+             },
+             "99" = {
+               file.copy("www/deliberacao_3909.pdf", file)
+             },
+             "100" = {
+               file.copy("www/portaria_1996.pdf", file)
+             },
+             "101" = {
+               file.copy("www/portaria_29.pdf", file)
+             },
+             "102" = {
+               file.copy("www/portaria_3128.pdf", file)
+             },
+             "103" = {
+               file.copy("www/portaria_2211.pdf", file)
+             },
+             "104" = {
+               file.copy("www/portaria_3438.pdf", file)
+             },
+             "105" = {
+               file.copy("www/deliberacao_3763.pdf", file)
+             },
+             "106" = {
+               file.copy("www/resolucao_9074.pdf", file)
+             },
+             "107" = {
+               file.copy("www/deliberacao_4044.pdf", file)
+             },
+             "108" = {
+               file.copy("www/deliberacao_4505.pdf", file)
+             },
+             "109" = {
+               file.copy("www/resolucao_9112.pdf", file)
+             },
+             "110" = {
+               file.copy("www/deliberacao_4439.pdf", file)
+             },
+             "111" = {
+               file.copy("www/deliberacao_4408.pdf", file)
+             },
+             "112" = {
+               file.copy("www/resolucao_8983.pdf", file)
+             },
+             "113" = {
+               file.copy("www/resolucao_8984.pdf", file)
+             },
+             "114" = {
+               file.copy("www/deliberacao_4050.pdf", file)
+             },
+             "115" = {
+               file.copy("www/deliberacao_3951.pdf", file)
+             },
+             "116" = {
+               file.copy("www/resolucao_8301.pdf", file)
+             },
+             "117" = {
+               file.copy("www/resolucao_8357.pdf", file)
+             },
+             "118" = {
+               file.copy("www/deliberacao_3906.pdf", file)
+             },
+             "119" = {
+               file.copy("www/deliberacao_3909.pdf", file)
              })
     }
   )
@@ -712,32 +1244,62 @@ server <- function(input, output, session){
   output$marco_output <- renderTimevis({
     switch(input$nivel_input,
            "Todas as regulações" = {
-             switch(input$regulamentacoes_input,
-                    "Todas as regulações" = {df <- timedata},
-                    "IAM e AVC" = {df <- timedata %>% filter(subgroup == '1.1'|subgroup == '2.1')},
-                    "Somente IAM" = {df <- timedata %>% filter(subgroup == '1.2'|subgroup == '2.2')},
-                    "Somente AVC" = {df <- timedata %>% filter(subgroup == '1.3'|subgroup == '2.3')})
+             switch(input$regulamentacoes_all_input,
+                    "Todas as regulações" = {df <- timedata
+                                            centro <- "1996-06-30"},
+                    "IAM" = {df <- timedata %>% filter(subgroup == '1.2'|subgroup == '2.2')
+                             centro <- "2003-06-30"},
+                    "AVC" = {df <- timedata %>% filter(subgroup == '1.3'|subgroup == '2.3')
+                             centro <- "2010-06-30"},
+                    "Queimados" = {df <- timedata %>% filter(subgroup == '1.5'|subgroup == '2.5')
+                             centro <- "1999-06-30"},
+                    "Trauma" = {df <- timedata %>% filter(subgroup == '1.6')
+                                centro <- "2004-06-30"},
+                    "Rede de Resposta" = {df <- timedata %>% filter(subgroup == '2.4')
+                                centro <- "2019-06-30"},
+                    "Valora Minas" = {df <- timedata %>% filter(subgroup == '2.7')
+                                centro <- "2021-06-30"},
+                    "Outros/Misto" = {df <- timedata %>% filter(subgroup == '1.1'|subgroup == '2.1')
+                                 centro <- "1998-06-30"})
            },
            "Estadual" = {
-             switch(input$regulamentacoes_input,
-                    "Todas as regulações" = {df <- timedata %>% filter(group == '2')},
-                    "IAM e AVC" = {df <- timedata %>% filter(subgroup == '2.1')},
-                    "Somente IAM" = {df <- timedata %>% filter(subgroup == '2.2')},
-                    "Somente AVC" = {df <- timedata %>% filter(subgroup == '2.3')})
+             switch(input$regulamentacoes_mg_input,
+                    "Todas as regulações" = {df <- timedata %>% filter(group == '2')
+                    centro <- "2017-06-30"},
+                    "IAM" = {df <- timedata %>% filter(ssubgroup == '2.2')
+                    centro <- "2017-06-30"},
+                    "AVC" = {df <- timedata %>% filter(subgroup == '2.3')
+                    centro <- "2020-06-30"},
+                    "Queimados" = {df <- timedata %>% filter(subgroup == '2.5')
+                    centro <- "2022-06-30"},
+                    "Trauma" = {df <- timedata %>% filter(subgroup == '1.6')
+                    centro <- "2004-06-30"},
+                    "Rede de Resposta" = {df <- timedata %>% filter(subgroup == '2.4')
+                    centro <- "2019-06-30"},
+                    "Valora Minas" = {df <- timedata %>% filter(subgroup == '2.7')
+                    centro <- "2021-06-30"},
+                    "Outros/Misto" = {df <- timedata %>% filter(subgroup == '2.1')
+                    centro <- "2021-06-30"})
            },
            "Federal" = {
-             switch(input$regulamentacoes_input,
-                    "Todas as regulações" = {df <- timedata %>% filter(group == '1')},
-                    "IAM e AVC" = {df <- timedata %>% filter(subgroup == '1.1')},
-                    "Somente IAM" = {df <- timedata %>% filter(subgroup == '1.2')},
-                    "Somente AVC" = {df <- timedata %>% filter(subgroup == '1.3')})
+             switch(input$regulamentacoes_br_input,
+                    "Todas as regulações" = {df <- timedata %>% filter(group == '1')
+                    centro <- "1996-06-30"},
+                    "IAM" = {df <- timedata %>% filter(subgroup == '1.2')
+                    centro <- "2003-06-30"},
+                    "AVC" = {df <- timedata %>% filter(subgroup == '1.3')
+                    centro <- "2010-06-30"},
+                    "Queimados" = {df <- timedata %>% filter(subgroup == '1.5')
+                    centro <- "1999-06-30"},
+                    "Trauma" = {df <- timedata %>% filter(subgroup == '1.6')
+                    centro <- "2004-06-30"},
+                    "Outros/Misto" = {df <- timedata %>% filter(subgroup == '1.1')
+                    centro <- "1998-06-30"})
            })
     df = data.frame(df)
     linha_tempo <- timevis(data = df, groups = groups)
-    if(input$regulamentacoes_input == "Todas as regulações" && input$nivel_input == "Todas as regulações"){
-      linha_tempo <- linha_tempo %>% centerTime("1994-06-30")
-    } 
-     linha_tempo
+    linha_tempo <- linha_tempo %>% centerTime(centro)
+    linha_tempo
   })
   
   #Função de rearranjamento da data-------------------------------------------
@@ -797,7 +1359,7 @@ server <- function(input, output, session){
   #Pop-up da aba "Marco regulatório"
   observeEvent(input$marco_output_selected, {
     data = data_rearranjo(timedata %>% filter(id == input$marco_output_selected) %>% pull(start))
-
+    
     
     showModal(modalDialog(
       title = timedata %>% filter(id == input$marco_output_selected) %>% pull(content),
@@ -833,9 +1395,9 @@ server <- function(input, output, session){
     leaflet() %>% 
       setView(lat = latitude_inicial, lng = longitude_inicial, zoom = zoom_inicial) %>%
       addTiles() %>% addPolygons(data = mg_shp, color = "#444444", weight = 1, smoothFactor = 0.5,
-                                                   opacity = 1.0, fillOpacity = 0,
-                                                   highlightOptions = highlightOptions(color = "white", weight = 2,
-                                                                                       bringToFront = TRUE), group = "Municípios") %>%
+                                 opacity = 1.0, fillOpacity = 0,
+                                 highlightOptions = highlightOptions(color = "white", weight = 2,
+                                                                     bringToFront = TRUE), group = "Municípios") %>%
       addPolygons(data = mg_micros_shp, color = "#444444", weight = 1, smoothFactor = 0.5,
                   opacity = 1.0, fillOpacity = 0,
                   highlightOptions = highlightOptions(color = "white", weight = 2,
@@ -858,129 +1420,129 @@ server <- function(input, output, session){
             Shiny.onInputChange('mapa_estabelecimentos_polygon', e.layer.groupname)
         })
     }")
-
+    
     
   })
   
-    observeEvent(input$municipio_input,
+  observeEvent(input$municipio_input,
                {inputs$municipio <-input$municipio_input
                if(inputs$municipio != "--Todos os municípios--"){
                  leafletProxy("mapa_estabelecimentos") %>% fitBounds(0.99*coordenadas_municipios$X1[coordenadas_municipios$cidades == inputs$municipio], 0.99*coordenadas_municipios$X2[coordenadas_municipios$cidades == inputs$municipio],
-                                                                                       1.01*coordenadas_municipios$X1[coordenadas_municipios$cidades == inputs$municipio], 1.01*coordenadas_municipios$X2[coordenadas_municipios$cidades == inputs$municipio])
+                                                                     1.01*coordenadas_municipios$X1[coordenadas_municipios$cidades == inputs$municipio], 1.01*coordenadas_municipios$X2[coordenadas_municipios$cidades == inputs$municipio])
                } else{
                  leafletProxy("mapa_estabelecimentos") %>% setView(lng = longitude_inicial, lat = latitude_inicial, zoom = zoom_inicial)
                }
                })
+  
+  observeEvent(input$microrregiao_input,
+               {inputs$microrregiao <-input$microrregiao_input
+               if(inputs$microrregiao != "--Todas as microrregiões--"){
+                 leafletProxy("mapa_estabelecimentos") %>% fitBounds(0.98*coordenadas_micros$X1[coordenadas_micros$microrregiao == inputs$microrregiao], 0.98*coordenadas_micros$X2[coordenadas_micros$microrregiao == inputs$microrregiao],
+                                                                     1.02*coordenadas_micros$X1[coordenadas_micros$microrregiao == inputs$microrregiao], 1.02*coordenadas_micros$X2[coordenadas_micros$microrregiao == inputs$microrregiao])
+               } else{
+                 leafletProxy("mapa_estabelecimentos") %>% setView(lng = longitude_inicial, lat = latitude_inicial, zoom = zoom_inicial)
+               }
+               })
+  
+  observeEvent(input$macrorregiao_input,
+               {inputs$macrorregiao <-input$macrorregiao_input
+               if(input$macrorregiao_input != "--Todas as macrorregiões--"){
+                 leafletProxy("mapa_estabelecimentos") %>% fitBounds(0.95*coordenadas_macros$X1[coordenadas_macros$macrorregiao == input$macrorregiao_input], 0.95*coordenadas_macros$X2[coordenadas_macros$macrorregiao == input$macrorregiao_input],
+                                                                     1.05*coordenadas_macros$X1[coordenadas_macros$macrorregiao == input$macrorregiao_input], 1.05*coordenadas_macros$X2[coordenadas_macros$macrorregiao == input$macrorregiao_input])
+               } else{
+                 leafletProxy("mapa_estabelecimentos") %>% setView(lng = longitude_inicial, lat = latitude_inicial, zoom = zoom_inicial)
+               }
+               })
+  
+  observeEvent(input$mapa_estabelecimentos_groups,
+               inputs$estabelecimentos <- grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )])
+  
+  observeEvent(input$mapa_estabelecimentos_polygon,{
+    leafletProxy("mapa_estabelecimentos") %>% setView(lng = longitude_inicial, lat = latitude_inicial, zoom = zoom_inicial)
     
-    observeEvent(input$microrregiao_input,
-                 {inputs$microrregiao <-input$microrregiao_input
-                 if(inputs$microrregiao != "--Todas as microrregiões--"){
-                   leafletProxy("mapa_estabelecimentos") %>% fitBounds(0.98*coordenadas_micros$X1[coordenadas_micros$microrregiao == inputs$microrregiao], 0.98*coordenadas_micros$X2[coordenadas_micros$microrregiao == inputs$microrregiao],
-                                                                       1.02*coordenadas_micros$X1[coordenadas_micros$microrregiao == inputs$microrregiao], 1.02*coordenadas_micros$X2[coordenadas_micros$microrregiao == inputs$microrregiao])
-                 } else{
-                   leafletProxy("mapa_estabelecimentos") %>% setView(lng = longitude_inicial, lat = latitude_inicial, zoom = zoom_inicial)
-                 }
-                 })
-    
-    observeEvent(input$macrorregiao_input,
-                 {inputs$macrorregiao <-input$macrorregiao_input
-                 if(input$macrorregiao_input != "--Todas as macrorregiões--"){
-                   leafletProxy("mapa_estabelecimentos") %>% fitBounds(0.95*coordenadas_macros$X1[coordenadas_macros$macrorregiao == input$macrorregiao_input], 0.95*coordenadas_macros$X2[coordenadas_macros$macrorregiao == input$macrorregiao_input],
-                                                                       1.05*coordenadas_macros$X1[coordenadas_macros$macrorregiao == input$macrorregiao_input], 1.05*coordenadas_macros$X2[coordenadas_macros$macrorregiao == input$macrorregiao_input])
-                 } else{
-                   leafletProxy("mapa_estabelecimentos") %>% setView(lng = longitude_inicial, lat = latitude_inicial, zoom = zoom_inicial)
-                 }
-                 })
-    
-    observeEvent(input$mapa_estabelecimentos_groups,
-                 inputs$estabelecimentos <- grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )])
-    
-    observeEvent(input$mapa_estabelecimentos_polygon,{
-      leafletProxy("mapa_estabelecimentos") %>% setView(lng = longitude_inicial, lat = latitude_inicial, zoom = zoom_inicial)
-      
-      switch(input$mapa_estabelecimentos_polygon,
-             "Municípios" = {
-               updateSelectInput(session,
-                                 "microrregiao_input",
-                                 selected = "--Todas as microrregiões--"
-                                 )
-               updateSelectInput(session,
-                                 "macrorregiao_input",
-                                 selected = "--Todas as macrorregiões--"
-               )
-             },
-             "Microrregiões" = {
-               updateSelectizeInput(session,
-                                 "municipio_input",
-                                 selected = "--Todos os municípios--"
-               )
-               updateSelectInput(session,
-                                 "macrorregiao_input",
-                                 selected = "--Todas as macrorregiões--"
-               )
-             },
-             "Macrorregiões" = {
-               updateSelectizeInput(session,
-                                    "municipio_input",
-                                    selected = "--Todos os municípios--"
-               )
-               updateSelectInput(session,
-                                 "microrregiao_input",
-                                 selected = "--Todas as microrregiões--"
-               )
-             }
+    switch(input$mapa_estabelecimentos_polygon,
+           "Municípios" = {
+             updateSelectInput(session,
+                               "microrregiao_input",
+                               selected = "--Todas as microrregiões--"
              )
-    })
-
+             updateSelectInput(session,
+                               "macrorregiao_input",
+                               selected = "--Todas as macrorregiões--"
+             )
+           },
+           "Microrregiões" = {
+             updateSelectizeInput(session,
+                                  "municipio_input",
+                                  selected = "--Todos os municípios--"
+             )
+             updateSelectInput(session,
+                               "macrorregiao_input",
+                               selected = "--Todas as macrorregiões--"
+             )
+           },
+           "Macrorregiões" = {
+             updateSelectizeInput(session,
+                                  "municipio_input",
+                                  selected = "--Todos os municípios--"
+             )
+             updateSelectInput(session,
+                               "microrregiao_input",
+                               selected = "--Todas as microrregiões--"
+             )
+           }
+    )
+  })
+  
   #Tabela de exibição da aba "Estabelecimentos"-------------------------------
-    tabela_filtrada <- function(entrada, condicao, coluna){
-      if(entrada == condicao){
-        if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 3 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[2] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][3] == grupos_lista[3]){
-          tabela <- df_estabelecimentos_final
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[2]){
-          tabela <- df_estabelecimentos_final %>% filter(Tipologia != 'Não Habilitados')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[3]){
-          tabela <- df_estabelecimentos_final %>% filter(Tipologia != 'Rede Resposta')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[2] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[3]){
-          tabela <- df_estabelecimentos_final %>% filter(Tipologia != 'Habilitados IAM/AVC')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1]){
-          tabela <- df_estabelecimentos_final %>% filter(Tipologia == 'Habilitados IAM/AVC')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[2]){
-          tabela <- df_estabelecimentos_final %>% filter(Tipologia == 'Rede Resposta')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups)][1] == grupos_lista[3]){
-          tabela <- df_estabelecimentos_final %>% filter(Tipologia == 'Não Habilitados')
-        } else{
-          tabela <- df_estabelecimentos_final %>% filter(Tipologia != 'Habilitados IAM/AVC' & Tipologia != 'Rede Resposta' & Tipologia != 'Não Habilitados')
-        }
+  tabela_filtrada <- function(entrada, condicao, coluna){
+    if(entrada == condicao){
+      if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 3 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[2] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][3] == grupos_lista[3]){
+        tabela <- df_estabelecimentos_final
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[2]){
+        tabela <- df_estabelecimentos_final %>% filter(Tipologia != 'Não Habilitados')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[3]){
+        tabela <- df_estabelecimentos_final %>% filter(Tipologia != 'Rede Resposta')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[2] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[3]){
+        tabela <- df_estabelecimentos_final %>% filter(Tipologia != 'Habilitados IAM/AVC')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1]){
+        tabela <- df_estabelecimentos_final %>% filter(Tipologia == 'Habilitados IAM/AVC')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[2]){
+        tabela <- df_estabelecimentos_final %>% filter(Tipologia == 'Rede Resposta')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups)][1] == grupos_lista[3]){
+        tabela <- df_estabelecimentos_final %>% filter(Tipologia == 'Não Habilitados')
       } else{
-        if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 3 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[2] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][3] == grupos_lista[3]){
-          tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada)
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[2]){
-          tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia != 'Não Habilitados')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[3]){
-          tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia != 'Rede Resposta')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[2] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[3]){
-          tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia != 'Habilitados IAM/AVC')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1]){
-          tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia == 'Habilitados IAM/AVC')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[2]){
-          tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia == 'Rede Resposta')
-        } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups)][1] == grupos_lista[3]){
-          tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia == 'Não Habilitados')
-        } else{
-          tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia != 'Habilitados IAM/AVC' & Tipologia != 'Rede Resposta' & Tipologia != 'Não Habilitados')
-        }
+        tabela <- df_estabelecimentos_final %>% filter(Tipologia != 'Habilitados IAM/AVC' & Tipologia != 'Rede Resposta' & Tipologia != 'Não Habilitados')
       }
-      
-      tabela <- tabela[,c(1,2,4,6,8,9,10,11,47,44)]
-      tabela$tx_ocup2019 <- format(round(tabela$tx_ocup2019, 2), nsmall = 2)
-      colnames(tabela) = c("CNES", "Nome fantasia", "Município", "Microrregião", "Macrorregião", "Tipologia", "Tipo do estabelecimento", "Leitos SUS", "Porte","Taxa de ocupação (%, 2019)")
-      
-      return(tabela)
+    } else{
+      if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 3 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[2] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][3] == grupos_lista[3]){
+        tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada)
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[2]){
+        tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia != 'Não Habilitados')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[3]){
+        tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia != 'Rede Resposta')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 2 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[2] && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][2] == grupos_lista[3]){
+        tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia != 'Habilitados IAM/AVC')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[1]){
+        tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia == 'Habilitados IAM/AVC')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )][1] == grupos_lista[2]){
+        tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia == 'Rede Resposta')
+      } else if(length(grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups )]) == 1 && grupos_lista[which(grupos_lista %in% input$mapa_estabelecimentos_groups)][1] == grupos_lista[3]){
+        tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia == 'Não Habilitados')
+      } else{
+        tabela <- df_estabelecimentos_final %>% filter(!!sym(coluna) == entrada & Tipologia != 'Habilitados IAM/AVC' & Tipologia != 'Rede Resposta' & Tipologia != 'Não Habilitados')
+      }
     }
     
-    tabela_filtrada_municipios <- reactive({
-      tabela <- tabela_filtrada(inputs$municipio, "--Todos os municípios--", 'nome_municipio')
+    tabela <- tabela[,c(1,2,4,6,8,9,10,11,47,44)]
+    tabela$tx_ocup2019 <- format(round(tabela$tx_ocup2019, 2), nsmall = 2)
+    colnames(tabela) = c("CNES", "Nome fantasia", "Município", "Microrregião", "Macrorregião", "Tipologia", "Tipo do estabelecimento", "Leitos SUS", "Porte","Taxa de ocupação (%, 2019)")
+    
+    return(tabela)
+  }
+  
+  tabela_filtrada_municipios <- reactive({
+    tabela <- tabela_filtrada(inputs$municipio, "--Todos os municípios--", 'nome_municipio')
   })
   
   tabela_filtrada_microrregioes <- reactive({
@@ -1121,7 +1683,7 @@ server <- function(input, output, session){
     tabela <- cbind(grupo_hospitais, numero_hospitais, porcentagem_hospitais, leitos_n, leitos_p, pequeno_p, medio_p, grande_p)
     colnames(tabela) <- c("Grupo de hospitais", "Número", "Proporção (%)", "Leitos SUS", "Leitos SUS (%)", "Pequeno porte (%)", "Médio porte (%)", "Grande porte (%)")
     return(tabela)
-    }
+  }
   
   output$caracterizacao_municipios <- renderTable({
     descritivas_estabelecimentos(tabela_filtrada_municipios())
@@ -1179,10 +1741,10 @@ server <- function(input, output, session){
                 labels = "Tipologia",
                 title = "Tipologia")
     
-    })
+  })
   
   clicklist <- reactiveValues(ids = vector())
-
+  
   observeEvent(input$mapa_tipologia_shape_click,
                {
                  click_id <- input$mapa_tipologia_shape_click$id
@@ -1205,23 +1767,23 @@ server <- function(input, output, session){
                  Encoding(data_map$n_micro) <- "UTF-8"
                  
                  if(length(clicklist$ids) == 1){
-                 leafletProxy("mapa_tipologia") %>% addPolylines(data = data_map,
-                                                                 color = ~cor,
-                                                                 opacity = 1,
-                                                                 weight = ~espessura,
-                                                                 layerId = ~paste(1,c_micro)
-                                                                )
-                 } else{
-                   ultima_id <- paste(1,clicklist$ids[(length(clicklist$ids)-1)])
-                   leafletProxy("mapa_tipologia") %>% removeShape(ultima_id)%>% addPolylines(data = data_map,
+                   leafletProxy("mapa_tipologia") %>% addPolylines(data = data_map,
                                                                    color = ~cor,
                                                                    opacity = 1,
                                                                    weight = ~espessura,
                                                                    layerId = ~paste(1,c_micro)
                    )
+                 } else{
+                   ultima_id <- paste(1,clicklist$ids[(length(clicklist$ids)-1)])
+                   leafletProxy("mapa_tipologia") %>% removeShape(ultima_id)%>% addPolylines(data = data_map,
+                                                                                             color = ~cor,
+                                                                                             opacity = 1,
+                                                                                             weight = ~espessura,
+                                                                                             layerId = ~paste(1,c_micro)
+                   )
                  }
                  
-             })
+               })
   
   output$tipo_box <- renderUI({
     cor_funcao <- function(tipo){
@@ -1261,7 +1823,7 @@ server <- function(input, output, session){
         p("Classificação", style ="text-align: center;", style = "color: black;", style = "font-size:18px;"),
         p(" "),
         p(strong("Microrregiões: "), microrregioes, style ="text-align: justify;", style = "color: black;", style = "font-size:18px;")
-        )
+    )
   })
   
   #Abas de indicadores------------------------------------------------------
@@ -1334,10 +1896,10 @@ server <- function(input, output, session){
     df_2 <- df_mapa %>% filter(Tipologia == 'Habilitados IAM/AVC')
     df_3 <- df_mapa %>% filter(Tipologia == 'Rede Resposta')
     
-     variavel_plot <- variavel_plot %>% addPolylines(data = data_shp_1,
-                   color = "#000000",
-                   opacity = 1,
-                   weight = 5) %>%
+    variavel_plot <- variavel_plot %>% addPolylines(data = data_shp_1,
+                                                    color = "#000000",
+                                                    opacity = 1,
+                                                    weight = 5) %>%
       addPolygons(data = data_shp_2,
                   fillColor = "#FEE8A5",
                   fillOpacity = 0.4,
@@ -1416,12 +1978,12 @@ server <- function(input, output, session){
                                                                                                               "Pronto Atendimento" = n_solic_pa_IAM,
                                                                                                               "UBS" = n_solic_ubs_IAM,
                                                                                                               "Unidade Mista" = n_solic_unimista_IAM,
-                                                                                                               n_solic_central_IAM = NULL,
-                                                                                                               n_solic_clinica_IAM = NULL,
-                                                                                                               n_solic_hospital_IAM = NULL,
-                                                                                                               n_solic_pa_IAM = NULL,
-                                                                                                               n_solic_ubs_IAM = NULL,
-                                                                                                               n_solic_unimista_IAM = NULL) %>% pivot_longer(cols = c(-!!sym(coluna_df)),names_to = "categoria") %>% select(-c(!!sym(coluna_df)))
+                                                                                                              n_solic_central_IAM = NULL,
+                                                                                                              n_solic_clinica_IAM = NULL,
+                                                                                                              n_solic_hospital_IAM = NULL,
+                                                                                                              n_solic_pa_IAM = NULL,
+                                                                                                              n_solic_ubs_IAM = NULL,
+                                                                                                              n_solic_unimista_IAM = NULL) %>% pivot_longer(cols = c(-!!sym(coluna_df)),names_to = "categoria") %>% select(-c(!!sym(coluna_df)))
            },
            "AVC" = {
              df_tipo <- df %>% filter(!!sym(coluna_df) == input) %>% select (!!sym(coluna_df),
@@ -1443,9 +2005,9 @@ server <- function(input, output, session){
                                                                                                               n_solic_ubs_AVC = NULL,
                                                                                                               n_solic_unimista_AVC = NULL) %>% pivot_longer(cols = c(-!!sym(coluna_df)),names_to = "categoria") %>% select(-c(!!sym(coluna_df)))
            }
-           )
+    )
     
-
+    
     grafico <-df_tipo %>% plot_ly(labels = ~categoria, values = ~value,
                                   textinfo = 'percent',
                                   hoverinfo = 'text',
@@ -1471,17 +2033,17 @@ server <- function(input, output, session){
                                                                              n_solic_rr_AVC, n_solic_rr_IAM,
                                                                              n_solic_nhab_AVC, n_solic_nhab_IAM,
                                                                              n_solic_outros_AVC, n_solic_outros_IAM) %>% mutate("Habilitados IAM/AVC" = n_solic_hab_AVC + n_solic_hab_IAM,
-                                                                                                                                   "Rede Resposta" = n_solic_rr_AVC + n_solic_rr_IAM,
-                                                                                                                                   "Não Habilitados" = n_solic_nhab_AVC + n_solic_nhab_IAM,
-                                                                                                                                   "Outros" = n_solic_outros_AVC + n_solic_outros_IAM,
-                                                                                                                                   n_solic_hab_AVC = NULL, 
-                                                                                                                                   n_solic_hab_IAM = NULL,
-                                                                                                                                   n_solic_rr_AVC = NULL, 
-                                                                                                                                   n_solic_rr_IAM = NULL,
-                                                                                                                                   n_solic_nhab_AVC = NULL,
-                                                                                                                                   n_solic_nhab_IAM = NULL,
-                                                                                                                                   n_solic_outros_AVC = NULL,
-                                                                                                                                   n_solic_outros_IAM = NULL) %>% pivot_longer(cols = c(-!!sym(coluna_df)),names_to = "categoria") %>% select(-c(!!sym(coluna_df)))
+                                                                                                                                "Rede Resposta" = n_solic_rr_AVC + n_solic_rr_IAM,
+                                                                                                                                "Não Habilitados" = n_solic_nhab_AVC + n_solic_nhab_IAM,
+                                                                                                                                "Outros" = n_solic_outros_AVC + n_solic_outros_IAM,
+                                                                                                                                n_solic_hab_AVC = NULL, 
+                                                                                                                                n_solic_hab_IAM = NULL,
+                                                                                                                                n_solic_rr_AVC = NULL, 
+                                                                                                                                n_solic_rr_IAM = NULL,
+                                                                                                                                n_solic_nhab_AVC = NULL,
+                                                                                                                                n_solic_nhab_IAM = NULL,
+                                                                                                                                n_solic_outros_AVC = NULL,
+                                                                                                                                n_solic_outros_IAM = NULL) %>% pivot_longer(cols = c(-!!sym(coluna_df)),names_to = "categoria") %>% select(-c(!!sym(coluna_df)))
              
            },
            "IAM" = {
@@ -1490,13 +2052,13 @@ server <- function(input, output, session){
                                                                              n_solic_rr_IAM,
                                                                              n_solic_nhab_IAM,
                                                                              n_solic_outros_IAM) %>% mutate("Habilitados IAM/AVC" = n_solic_hab_IAM,
-                                                                                                                                "Rede Resposta" = n_solic_rr_IAM,
-                                                                                                                                "Não Habilitados" = n_solic_nhab_IAM,
-                                                                                                                                "Outros" = n_solic_outros_IAM,
-                                                                                                                                n_solic_hab_IAM = NULL,
-                                                                                                                                n_solic_rr_IAM = NULL,
-                                                                                                                                n_solic_nhab_IAM = NULL, 
-                                                                                                                                n_solic_outros_IAM = NULL) %>% pivot_longer(cols = c(-!!sym(coluna_df)),names_to = "categoria") %>% select(-c(!!sym(coluna_df)))
+                                                                                                            "Rede Resposta" = n_solic_rr_IAM,
+                                                                                                            "Não Habilitados" = n_solic_nhab_IAM,
+                                                                                                            "Outros" = n_solic_outros_IAM,
+                                                                                                            n_solic_hab_IAM = NULL,
+                                                                                                            n_solic_rr_IAM = NULL,
+                                                                                                            n_solic_nhab_IAM = NULL, 
+                                                                                                            n_solic_outros_IAM = NULL) %>% pivot_longer(cols = c(-!!sym(coluna_df)),names_to = "categoria") %>% select(-c(!!sym(coluna_df)))
            },
            "AVC" = {
              df_tipo <- df %>% filter(!!sym(coluna_df) == input) %>% select (!!sym(coluna_df),
@@ -1542,17 +2104,17 @@ server <- function(input, output, session){
     
     df_ocup[is.na(df_ocup)] <- 0
     grafico <- plot_ly(df_ocup) %>%
-                add_bars(x= ~value, y = ~as.factor(tipo), type = 'bar', orientation = 'h',
-                         width = c(0.4,0.4,0.4),
-                         marker = list(color = c('#1F3F49','#23282D','#6AB187')),
-                             name = "Ocupação",
-                         hovertemplate = ~paste(format(round(value,2), nsmall = 2, decimal.mark = ","),"%")) %>%
-                layout(xaxis = list(title = "Taxa de ocupação (%)"),
-                       yaxis = list(title = "",
-                                    categoryorder = 'array',
-                                    categoryarray = c('Não Habilitados', 'Rede Resposta', 'Habilitados IAM/AVC')))                                                                                                                       
+      add_bars(x= ~value, y = ~as.factor(tipo), type = 'bar', orientation = 'h',
+               width = c(0.4,0.4,0.4),
+               marker = list(color = c('#1F3F49','#23282D','#6AB187')),
+               name = "Ocupação",
+               hovertemplate = ~paste(format(round(value,2), nsmall = 2, decimal.mark = ","),"%")) %>%
+      layout(xaxis = list(title = "Taxa de ocupação (%)"),
+             yaxis = list(title = "",
+                          categoryorder = 'array',
+                          categoryarray = c('Não Habilitados', 'Rede Resposta', 'Habilitados IAM/AVC')))                                                                                                                       
     
-                                                                                                                               
+    
     return(grafico)
   }
   
@@ -1562,7 +2124,7 @@ server <- function(input, output, session){
                                                                     !!sym(col_adeq),
                                                                     !!sym(col_adeq_diff)) %>% pivot_longer(cols = c(-!!sym(coluna_df)),names_to = "tipo") %>% select(-c(!!sym(coluna_df)))
     
-
+    
     df_tempo['tipo'] <-c("Tempo adequado", "Com transferência")
     
     df_tempo[is.na(df_tempo)] <- 0
@@ -1592,11 +2154,11 @@ server <- function(input, output, session){
     df_transf['tipo'] <- c("Habilitados IAM/AVC", "Rede Resposta", "Não Habilitados")
     df_transf[is.na(df_transf)] <- 0
     grafico <-df_transf %>% plot_ly(labels = ~tipo, values = ~value,
-                                  textinfo = 'percent',
-                                  hoverinfo = 'text',
-                                  text = ~paste(value,ifelse(value>1,'transferências','transferência')),
-                                  marker = list(colors = cores,
-                                                line = list(color = '#FFFFFF', width = 1))) %>%
+                                    textinfo = 'percent',
+                                    hoverinfo = 'text',
+                                    text = ~paste(value,ifelse(value>1,'transferências','transferência')),
+                                    marker = list(colors = cores,
+                                                  line = list(color = '#FFFFFF', width = 1))) %>%
       add_pie(hole = 0.8) %>%
       layout(showlegend = TRUE,
              legend = list(orientation = 'h'),
@@ -1623,13 +2185,13 @@ server <- function(input, output, session){
                name = "Transferências",
                hovertemplate = ~paste(format(round(value*100,2), nsmall = 2, decimal.mark = ","),"%")) %>%
       layout(#bargap = 0.1,
-             xaxis = list(title = "Taxa de transferência (%)"),
-             yaxis = list(title = "",
-                          categoryorder = 'array',
-                          categoryarray = c('Outros','Não Habilitados', 'Rede Resposta', 'Habilitados IAM/AVC')))                                                                                                                       
+        xaxis = list(title = "Taxa de transferência (%)"),
+        yaxis = list(title = "",
+                     categoryorder = 'array',
+                     categoryarray = c('Outros','Não Habilitados', 'Rede Resposta', 'Habilitados IAM/AVC')))                                                                                                                       
     
     
-
+    
     return(grafico)
   }
   
@@ -1653,7 +2215,7 @@ server <- function(input, output, session){
   
   grafico_distancia <- function(df, regiao, input, residencia_pe, pe_destino, regiao_diferente_residencia_pe, regiao_diferente_pe_destino, frase){
     y <- "Distância"
- 
+    
     vetor_distancia <- criacao_vetor(df %>% filter(!!sym(regiao) == input) %>% pull(!!sym(residencia_pe)))
     vetor_distancia2 <- criacao_vetor(df %>% filter(!!sym(regiao) == input) %>% pull(!!sym(pe_destino)))
     vetor_distancia3 <- criacao_vetor(df %>% filter(!!sym(regiao) == input) %>% pull(!!sym(regiao_diferente_residencia_pe)))
@@ -1663,7 +2225,7 @@ server <- function(input, output, session){
     data2 <- data.frame(y, vetor_distancia2)
     data3 <- data.frame(y, vetor_distancia3)
     data4 <- data.frame(y, vetor_distancia4)
-
+    
     grafico <- plot_ly(data4, x = ~vetor_distancia4, y = 0.25, type = 'bar', orientation = 'h', name = "Distância",
                        hovertemplate = ~paste(format(round(sum(vetor_distancia4),2),nsmall = 2, decimal.mark = ","),"km"),
                        marker = list(color = '#D32D41',
@@ -1723,15 +2285,15 @@ server <- function(input, output, session){
   
   comparacao_oferta_tabela <- function(df, regiao, input){
     df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select(!!sym(regiao),
-                                                                n_habilitados,
-                                                                n_rr,
-                                                                n_naohab,
-                                                                taxa_leitos_sus_hab,
-                                                                taxa_leitos_sus_rr,
-                                                                taxa_leitos_sus_naohab,
-                                                                tx_leito_nsus,
-                                                                pop_tot,
-                                                                pop_45mais)
+                                                                  n_habilitados,
+                                                                  n_rr,
+                                                                  n_naohab,
+                                                                  taxa_leitos_sus_hab,
+                                                                  taxa_leitos_sus_rr,
+                                                                  taxa_leitos_sus_naohab,
+                                                                  tx_leito_nsus,
+                                                                  pop_tot,
+                                                                  pop_45mais)
     df_comp[is.na(df_comp)] <- 0
     
     df_comp[,c("taxa_leitos_sus_hab", "taxa_leitos_sus_rr", "taxa_leitos_sus_naohab", "tx_leito_nsus")] <- lapply(df_comp[,c("taxa_leitos_sus_hab", "taxa_leitos_sus_rr", "taxa_leitos_sus_naohab", "tx_leito_nsus")], funcao_numeros_taxa)
@@ -1753,73 +2315,73 @@ server <- function(input, output, session){
     switch(enfermidade,
            "Todas as enfermidades" = {
              df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select (!!sym(regiao),
-                                                                          n_solic_central_AVC, n_solic_central_IAM,
-                                                                          n_solic_clinica_AVC, n_solic_clinica_IAM,
-                                                                          n_solic_hospital_AVC, n_solic_hospital_IAM,
-                                                                          n_solic_pa_AVC, n_solic_pa_IAM,
-                                                                          n_solic_ubs_AVC, n_solic_ubs_IAM,
-                                                                          n_solic_unimista_AVC,n_solic_unimista_IAM) %>% mutate("Central" = n_solic_central_AVC + n_solic_central_IAM,
-                                                                                                                                "Clínica" = n_solic_clinica_AVC + n_solic_clinica_IAM,
-                                                                                                                                "Hospital" = n_solic_hospital_AVC + n_solic_hospital_IAM,
-                                                                                                                                "Pronto Atendimento" = n_solic_pa_AVC + n_solic_pa_IAM,
-                                                                                                                                "UBS" = n_solic_ubs_AVC + n_solic_ubs_IAM,
-                                                                                                                                "Unidade Mista" = n_solic_unimista_AVC + n_solic_unimista_IAM,
-                                                                                                                                n_solic_central_AVC = NULL, 
-                                                                                                                                n_solic_central_IAM = NULL,
-                                                                                                                                n_solic_clinica_AVC = NULL, 
-                                                                                                                                n_solic_clinica_IAM = NULL,
-                                                                                                                                n_solic_hospital_AVC = NULL, 
-                                                                                                                                n_solic_hospital_IAM = NULL,
-                                                                                                                                n_solic_pa_AVC = NULL,
-                                                                                                                                n_solic_pa_IAM = NULL,
-                                                                                                                                n_solic_ubs_AVC = NULL, 
-                                                                                                                                n_solic_ubs_IAM = NULL,
-                                                                                                                                n_solic_unimista_AVC = NULL,
-                                                                                                                                n_solic_unimista_IAM = NULL)
+                                                                            n_solic_central_AVC, n_solic_central_IAM,
+                                                                            n_solic_clinica_AVC, n_solic_clinica_IAM,
+                                                                            n_solic_hospital_AVC, n_solic_hospital_IAM,
+                                                                            n_solic_pa_AVC, n_solic_pa_IAM,
+                                                                            n_solic_ubs_AVC, n_solic_ubs_IAM,
+                                                                            n_solic_unimista_AVC,n_solic_unimista_IAM) %>% mutate("Central" = n_solic_central_AVC + n_solic_central_IAM,
+                                                                                                                                  "Clínica" = n_solic_clinica_AVC + n_solic_clinica_IAM,
+                                                                                                                                  "Hospital" = n_solic_hospital_AVC + n_solic_hospital_IAM,
+                                                                                                                                  "Pronto Atendimento" = n_solic_pa_AVC + n_solic_pa_IAM,
+                                                                                                                                  "UBS" = n_solic_ubs_AVC + n_solic_ubs_IAM,
+                                                                                                                                  "Unidade Mista" = n_solic_unimista_AVC + n_solic_unimista_IAM,
+                                                                                                                                  n_solic_central_AVC = NULL, 
+                                                                                                                                  n_solic_central_IAM = NULL,
+                                                                                                                                  n_solic_clinica_AVC = NULL, 
+                                                                                                                                  n_solic_clinica_IAM = NULL,
+                                                                                                                                  n_solic_hospital_AVC = NULL, 
+                                                                                                                                  n_solic_hospital_IAM = NULL,
+                                                                                                                                  n_solic_pa_AVC = NULL,
+                                                                                                                                  n_solic_pa_IAM = NULL,
+                                                                                                                                  n_solic_ubs_AVC = NULL, 
+                                                                                                                                  n_solic_ubs_IAM = NULL,
+                                                                                                                                  n_solic_unimista_AVC = NULL,
+                                                                                                                                  n_solic_unimista_IAM = NULL)
            },
            "IAM" = {
              df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select (!!sym(regiao),
-                                                                             n_solic_central_IAM,
-                                                                             n_solic_clinica_IAM,
-                                                                             n_solic_hospital_IAM,
-                                                                             n_solic_pa_IAM,
-                                                                             n_solic_ubs_IAM,
-                                                                             n_solic_unimista_IAM) %>% mutate("Central" = n_solic_central_IAM,
-                                                                                                              "Clínica" = n_solic_clinica_IAM,
-                                                                                                              "Hospital" = n_solic_hospital_IAM,
-                                                                                                              "Pronto Atendimento" = n_solic_pa_IAM,
-                                                                                                              "UBS" = n_solic_ubs_IAM,
-                                                                                                              "Unidade Mista" = n_solic_unimista_IAM,
-                                                                                                              n_solic_central_IAM = NULL,
-                                                                                                              n_solic_clinica_IAM = NULL,
-                                                                                                              n_solic_hospital_IAM = NULL,
-                                                                                                              n_solic_pa_IAM = NULL,
-                                                                                                              n_solic_ubs_IAM = NULL,
-                                                                                                              n_solic_unimista_IAM = NULL)
+                                                                            n_solic_central_IAM,
+                                                                            n_solic_clinica_IAM,
+                                                                            n_solic_hospital_IAM,
+                                                                            n_solic_pa_IAM,
+                                                                            n_solic_ubs_IAM,
+                                                                            n_solic_unimista_IAM) %>% mutate("Central" = n_solic_central_IAM,
+                                                                                                             "Clínica" = n_solic_clinica_IAM,
+                                                                                                             "Hospital" = n_solic_hospital_IAM,
+                                                                                                             "Pronto Atendimento" = n_solic_pa_IAM,
+                                                                                                             "UBS" = n_solic_ubs_IAM,
+                                                                                                             "Unidade Mista" = n_solic_unimista_IAM,
+                                                                                                             n_solic_central_IAM = NULL,
+                                                                                                             n_solic_clinica_IAM = NULL,
+                                                                                                             n_solic_hospital_IAM = NULL,
+                                                                                                             n_solic_pa_IAM = NULL,
+                                                                                                             n_solic_ubs_IAM = NULL,
+                                                                                                             n_solic_unimista_IAM = NULL)
              
            },
            "AVC" = {
              df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select (!!sym(regiao),
-                                                                          n_solic_central_AVC,
-                                                                          n_solic_clinica_AVC,
-                                                                          n_solic_hospital_AVC,
-                                                                          n_solic_pa_AVC,
-                                                                          n_solic_ubs_AVC,
-                                                                          n_solic_unimista_AVC) %>% mutate("Central" = n_solic_central_AVC,
-                                                                                                           "Clínica" = n_solic_clinica_AVC,
-                                                                                                           "Hospital" = n_solic_hospital_AVC,
-                                                                                                           "Pronto Atendimento" = n_solic_pa_AVC,
-                                                                                                           "UBS" = n_solic_ubs_AVC,
-                                                                                                           "Unidade Mista" = n_solic_unimista_AVC,
-                                                                                                           n_solic_central_AVC = NULL,
-                                                                                                           n_solic_clinica_AVC = NULL,
-                                                                                                           n_solic_hospital_AVC = NULL,
-                                                                                                           n_solic_pa_AVC = NULL,
-                                                                                                           n_solic_ubs_AVC = NULL,
-                                                                                                           n_solic_unimista_AVC = NULL)
+                                                                            n_solic_central_AVC,
+                                                                            n_solic_clinica_AVC,
+                                                                            n_solic_hospital_AVC,
+                                                                            n_solic_pa_AVC,
+                                                                            n_solic_ubs_AVC,
+                                                                            n_solic_unimista_AVC) %>% mutate("Central" = n_solic_central_AVC,
+                                                                                                             "Clínica" = n_solic_clinica_AVC,
+                                                                                                             "Hospital" = n_solic_hospital_AVC,
+                                                                                                             "Pronto Atendimento" = n_solic_pa_AVC,
+                                                                                                             "UBS" = n_solic_ubs_AVC,
+                                                                                                             "Unidade Mista" = n_solic_unimista_AVC,
+                                                                                                             n_solic_central_AVC = NULL,
+                                                                                                             n_solic_clinica_AVC = NULL,
+                                                                                                             n_solic_hospital_AVC = NULL,
+                                                                                                             n_solic_pa_AVC = NULL,
+                                                                                                             n_solic_ubs_AVC = NULL,
+                                                                                                             n_solic_unimista_AVC = NULL)
            }
            
-           )
+    )
     
     if(regiao == "nomemacro"){
       names(df_comp)[names(df_comp) == "nomemacro"] <- "Macrorregião"
@@ -1837,50 +2399,50 @@ server <- function(input, output, session){
     switch(enfermidade,
            "Todas as enfermidades" = {
              df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select (!!sym(regiao),
-                                                                             n_solic_hab_AVC, n_solic_hab_IAM,
-                                                                             n_solic_rr_AVC, n_solic_rr_IAM,
-                                                                             n_solic_nhab_AVC, n_solic_nhab_IAM,
-                                                                             n_solic_outros_AVC, n_solic_outros_IAM) %>% mutate("Habilitados IAM/AVC" = n_solic_hab_AVC + n_solic_hab_IAM,
-                                                                                                                                "Rede Resposta" = n_solic_rr_AVC + n_solic_rr_IAM,
-                                                                                                                                "Não Habilitados" = n_solic_nhab_AVC + n_solic_nhab_IAM,
-                                                                                                                                "Outros" = n_solic_outros_AVC + n_solic_outros_IAM,
-                                                                                                                                n_solic_hab_AVC = NULL, 
-                                                                                                                                n_solic_hab_IAM = NULL,
-                                                                                                                                n_solic_rr_AVC = NULL, 
-                                                                                                                                n_solic_rr_IAM = NULL,
-                                                                                                                                n_solic_nhab_AVC = NULL,
-                                                                                                                                n_solic_nhab_IAM = NULL,
-                                                                                                                                n_solic_outros_AVC = NULL,
-                                                                                                                                n_solic_outros_IAM = NULL)
+                                                                            n_solic_hab_AVC, n_solic_hab_IAM,
+                                                                            n_solic_rr_AVC, n_solic_rr_IAM,
+                                                                            n_solic_nhab_AVC, n_solic_nhab_IAM,
+                                                                            n_solic_outros_AVC, n_solic_outros_IAM) %>% mutate("Habilitados IAM/AVC" = n_solic_hab_AVC + n_solic_hab_IAM,
+                                                                                                                               "Rede Resposta" = n_solic_rr_AVC + n_solic_rr_IAM,
+                                                                                                                               "Não Habilitados" = n_solic_nhab_AVC + n_solic_nhab_IAM,
+                                                                                                                               "Outros" = n_solic_outros_AVC + n_solic_outros_IAM,
+                                                                                                                               n_solic_hab_AVC = NULL, 
+                                                                                                                               n_solic_hab_IAM = NULL,
+                                                                                                                               n_solic_rr_AVC = NULL, 
+                                                                                                                               n_solic_rr_IAM = NULL,
+                                                                                                                               n_solic_nhab_AVC = NULL,
+                                                                                                                               n_solic_nhab_IAM = NULL,
+                                                                                                                               n_solic_outros_AVC = NULL,
+                                                                                                                               n_solic_outros_IAM = NULL)
              
            },
            "IAM" = {
              df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select (!!sym(regiao),
-                                                                             n_solic_hab_IAM,
-                                                                             n_solic_rr_IAM,
-                                                                             n_solic_nhab_IAM,
-                                                                             n_solic_outros_IAM) %>% mutate("Habilitados IAM/AVC" = n_solic_hab_IAM,
-                                                                                                            "Rede Resposta" = n_solic_rr_IAM,
-                                                                                                            "Não Habilitados" = n_solic_nhab_IAM,
-                                                                                                            "Outros" = n_solic_outros_IAM,
-                                                                                                            n_solic_hab_IAM = NULL,
-                                                                                                            n_solic_rr_IAM = NULL,
-                                                                                                            n_solic_nhab_IAM = NULL, 
-                                                                                                            n_solic_outros_IAM = NULL)
+                                                                            n_solic_hab_IAM,
+                                                                            n_solic_rr_IAM,
+                                                                            n_solic_nhab_IAM,
+                                                                            n_solic_outros_IAM) %>% mutate("Habilitados IAM/AVC" = n_solic_hab_IAM,
+                                                                                                           "Rede Resposta" = n_solic_rr_IAM,
+                                                                                                           "Não Habilitados" = n_solic_nhab_IAM,
+                                                                                                           "Outros" = n_solic_outros_IAM,
+                                                                                                           n_solic_hab_IAM = NULL,
+                                                                                                           n_solic_rr_IAM = NULL,
+                                                                                                           n_solic_nhab_IAM = NULL, 
+                                                                                                           n_solic_outros_IAM = NULL)
            },
            "AVC" = {
              df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select (!!sym(regiao),
-                                                                             n_solic_hab_AVC,
-                                                                             n_solic_rr_AVC,
-                                                                             n_solic_nhab_AVC,
-                                                                             n_solic_outros_AVC) %>% mutate("Habilitados IAM/AVC" = n_solic_hab_AVC,
-                                                                                                            "Rede Resposta" = n_solic_rr_AVC,
-                                                                                                            "Não Habilitados" = n_solic_nhab_AVC,
-                                                                                                            "Outros" = n_solic_outros_AVC,
-                                                                                                            n_solic_hab_AVC = NULL,
-                                                                                                            n_solic_rr_AVC = NULL,
-                                                                                                            n_solic_nhab_AVC = NULL, 
-                                                                                                            n_solic_outros_AVC = NULL)
+                                                                            n_solic_hab_AVC,
+                                                                            n_solic_rr_AVC,
+                                                                            n_solic_nhab_AVC,
+                                                                            n_solic_outros_AVC) %>% mutate("Habilitados IAM/AVC" = n_solic_hab_AVC,
+                                                                                                           "Rede Resposta" = n_solic_rr_AVC,
+                                                                                                           "Não Habilitados" = n_solic_nhab_AVC,
+                                                                                                           "Outros" = n_solic_outros_AVC,
+                                                                                                           n_solic_hab_AVC = NULL,
+                                                                                                           n_solic_rr_AVC = NULL,
+                                                                                                           n_solic_nhab_AVC = NULL, 
+                                                                                                           n_solic_outros_AVC = NULL)
            }
     )
     
@@ -1921,48 +2483,48 @@ server <- function(input, output, session){
     if(regiao == "nomemacro"){
       if(enfermidade == "IAM"){
         df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select(!!sym(regiao),
-                                                                tx_tempo_adeq_alta_IAM,
-                                                                tx_tempo_adeq_alta_macrodif_IAM,
-                                                                tx_evasao_alta_IAM,
-                                                                tx_transf_estab_alta_hab_IAM,
-                                                                tx_transf_estab_alta_rr_IAM,
-                                                                tx_transf_estab_alta_nhab_IAM,
-                                                                tx_transf_estab_alta_outros_IAM,
-                                                                tx_transf_estab_alta_total_IAM)
+                                                                      tx_tempo_adeq_alta_IAM,
+                                                                      tx_tempo_adeq_alta_macrodif_IAM,
+                                                                      tx_evasao_alta_IAM,
+                                                                      tx_transf_estab_alta_hab_IAM,
+                                                                      tx_transf_estab_alta_rr_IAM,
+                                                                      tx_transf_estab_alta_nhab_IAM,
+                                                                      tx_transf_estab_alta_outros_IAM,
+                                                                      tx_transf_estab_alta_total_IAM)
       }else{
         df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select(!!sym(regiao),
-                                                                tx_tempo_adeq_alta_AVC,
-                                                                tx_tempo_adeq_alta_macrodif_AVC,
-                                                                tx_evasao_alta_AVC,
-                                                                tx_transf_estab_alta_hab_AVC,
-                                                                tx_transf_estab_alta_rr_AVC,
-                                                                tx_transf_estab_alta_nhab_AVC,
-                                                                tx_transf_estab_alta_outros_AVC,
-                                                                tx_transf_estab_alta_total_AVC)
+                                                                      tx_tempo_adeq_alta_AVC,
+                                                                      tx_tempo_adeq_alta_macrodif_AVC,
+                                                                      tx_evasao_alta_AVC,
+                                                                      tx_transf_estab_alta_hab_AVC,
+                                                                      tx_transf_estab_alta_rr_AVC,
+                                                                      tx_transf_estab_alta_nhab_AVC,
+                                                                      tx_transf_estab_alta_outros_AVC,
+                                                                      tx_transf_estab_alta_total_AVC)
       }
       
       
     }else{
       if(enfermidade == "IAM"){
         df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select(!!sym(regiao),
-                                                                tx_tempo_adeq_media_IAM,
-                                                                tx_tempo_adeq_media_microdif_IAM,
-                                                                tx_evasao_media_IAM,
-                                                                tx_transf_estab_media_hab_IAM,
-                                                                tx_transf_estab_media_rr_IAM,
-                                                                tx_transf_estab_media_nhab_IAM,
-                                                                tx_transf_estab_media_outros_IAM,
-                                                                tx_transf_estab_media_total_IAM)
+                                                                      tx_tempo_adeq_media_IAM,
+                                                                      tx_tempo_adeq_media_microdif_IAM,
+                                                                      tx_evasao_media_IAM,
+                                                                      tx_transf_estab_media_hab_IAM,
+                                                                      tx_transf_estab_media_rr_IAM,
+                                                                      tx_transf_estab_media_nhab_IAM,
+                                                                      tx_transf_estab_media_outros_IAM,
+                                                                      tx_transf_estab_media_total_IAM)
       }else{
         df_comp <- df %>% filter(!!sym(regiao) %in% input) %>% select(!!sym(regiao),
-                                                                tx_tempo_adeq_media_AVC,
-                                                                tx_tempo_adeq_media_microdif_AVC,
-                                                                tx_evasao_media_AVC,
-                                                                tx_transf_estab_media_hab_AVC,
-                                                                tx_transf_estab_media_rr_AVC,
-                                                                tx_transf_estab_media_nhab_AVC,
-                                                                tx_transf_estab_media_outros_AVC,
-                                                                tx_transf_estab_media_total_AVC)
+                                                                      tx_tempo_adeq_media_AVC,
+                                                                      tx_tempo_adeq_media_microdif_AVC,
+                                                                      tx_evasao_media_AVC,
+                                                                      tx_transf_estab_media_hab_AVC,
+                                                                      tx_transf_estab_media_rr_AVC,
+                                                                      tx_transf_estab_media_nhab_AVC,
+                                                                      tx_transf_estab_media_outros_AVC,
+                                                                      tx_transf_estab_media_total_AVC)
       }
       
     }
@@ -2010,8 +2572,8 @@ server <- function(input, output, session){
                                                                       n_transf_media_destino_rr_AVC,
                                                                       n_transf_media_destino_nhab_AVC)
       }
-      }
-      
+    }
+    
     df_comp[is.na(df_comp)] <- 0
     df_comp[,c(2:4)] <- lapply(df_comp[,c(2:4)], funcao_numeros_absolutos)
     
@@ -2125,16 +2687,16 @@ server <- function(input, output, session){
       )
     } else{
       ui <- box(title = NULL,
-       solidHeader = TRUE,
-       width = 12,
-       DT::dataTableOutput("comparacao_oferta_macro")
+                solidHeader = TRUE,
+                width = 12,
+                DT::dataTableOutput("comparacao_oferta_macro")
       )
     }
     return(ui)
   }
   ui_demanda_macro <- function(){
     if(input$macro_comparacao_input == 0){
-     ui <- (fluidRow(
+      ui <- (fluidRow(
         box(title = "Tipo do estabelecimento porta de entrada",
             status = "warning",
             solidHeader = FALSE,
@@ -2192,7 +2754,7 @@ server <- function(input, output, session){
     return(ui)
   }
   ui_desempenho_macro <- function(){
-     if(input$macro_comparacao_input == 0){
+    if(input$macro_comparacao_input == 0){
       ui <- div(
         tags$h1("Desempenho"),
         fluidRow(
@@ -2353,7 +2915,7 @@ server <- function(input, output, session){
     return(zoom_final)
   }
   
-
+  
   
   observeEvent(input$exibicao_macro,{
     plots_macro$ui_oferta <- ui_oferta_macro()
@@ -2435,8 +2997,8 @@ server <- function(input, output, session){
       plots_macro$download_desempenho_distancias <- plots_macro$comparacao_desempenho_distancias
     }
     
-
-
+    
+    
     zoom_n = nivel_zoom(input$macro_input)
     
     plots_macro$mapa <- mapas_indicadores(coordenadas_macros, "macrorregiao", input$macro_input, "macro", zoom_n, data_macro, data_micro, data_micro@data$n_micro, input$macro_comparacao_input, input$macro_comp_input)
@@ -2569,7 +3131,7 @@ server <- function(input, output, session){
                    language = list(url = '//cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json')),
     rownames = FALSE
   )
-
+  
   output$comparacao_desempenho_taxas_macro <- DT::renderDataTable(
     plots_macro$comparacao_desempenho_taxas,
     options = list(scrollX = '400px',
@@ -2615,7 +3177,7 @@ server <- function(input, output, session){
                         "Desempenho - Transferências" = plots_macro$download_desempenho_transfs,
                         "Desempenho - Distâncias" = plots_macro$download_desempenho_distancias), file)
       }
-        }
+    }
     
   )
   
@@ -2804,10 +3366,10 @@ server <- function(input, output, session){
       }
     }
     
-
+    
   })
   
-
+  
   
   output$micro_tipo_comparacao_ui <- renderUI({
     if(input$micro_input != "Ipatinga"){
@@ -2821,7 +3383,7 @@ server <- function(input, output, session){
       label = "Comparação",
       choices = escolhas_micro,
     )
-    })
+  })
   
   output$micro_comparacao_ui <- renderUI({
     req(input$tipo_micro_input)
@@ -2946,7 +3508,7 @@ server <- function(input, output, session){
           plots_micro$distancias <- grafico_distancia(df_micro, "nomemicro",input$micro_input,"dist_paciente_origem_media_AVC","dist_origem_destino_media_AVC","dist_paciente_origem_media_microdif_AVC", "dist_origem_destino_media_microdif_AVC", "(micro diferente)")
         }
       }
-
+      
     } else{
       data_micro <- subset(mg_micros_shp, n_micro %in% c(input$micro_input, input$micro_comp_input))
       municipios_micro = df_ibge %>% filter(micro %in% c(input$micro_input, input$micro_comp_input)) %>% pull(municipio)
@@ -3034,7 +3596,7 @@ server <- function(input, output, session){
     if(is.null(plots_micro$habilitacao_estabelecimento_pe)) return()
     plots_micro$habilitacao_estabelecimento_pe
   })
-
+  
   output$ocupacao_micro <- renderPlotly({
     if(is.null(plots_micro$ocupacao_grafico)) return()
     plots_micro$ocupacao_grafico
