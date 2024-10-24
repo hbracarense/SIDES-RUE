@@ -96,7 +96,7 @@ tab_apresentacao <- tabPanel("Apresentação",
                                         p('Pedro Benner   ',strong('|'),'   Clara Sanna', style ="text-align: right;", style = "color: black;", style = "font-size:15px;"),
                                         br(),
                                         p(strong("Última atualização: "), "23 de outubro de 2024.", style ="text-align: justify;", style = "color: black;", style = "font-size:15px;"),
-                                        img(src = "assets/banner_sus.jpeg", height = '100%', width = '100%'),
+                                        img(src = "banner.jpeg", height = '100%', width = '100%'),
                                         br(),
                                         br(),
                                         fluidRow(      div(
